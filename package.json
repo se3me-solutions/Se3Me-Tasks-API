@@ -1,0 +1,17 @@
+{
+  "name": "se3me-tasks",
+  "version": "0.0.1",
+  "description": "",
+  "main": "gabriella.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Se3Me Solutions",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "firebase-admin": "^7.2.0"
+  }
+}
