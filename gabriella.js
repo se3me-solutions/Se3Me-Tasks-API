@@ -79,7 +79,7 @@ app.post('/user/remove/task/:taskId', (req, res) => {
 
 });
 
-app.post('user/edit/task/:taskId', (req, res) => {
+app.post('/user/edit/task/:taskId', (req, res) => {
 
     let taskId = req.params.taskId;
     let title = req.body.title;
@@ -148,7 +148,7 @@ app.post('/user/remove/homework/:homeworkId', (req, res) => {
 
 });
 
-app.post('user/edit/homework/:homeworkId', (req, res) => {
+app.post('/user/edit/homework/:homeworkId', (req, res) => {
 
     let homeworkId = req.params.homeworkId;
     let subject = req.body.subject;
@@ -200,7 +200,7 @@ app.post('/user/:email/create/notebook', (req, res) => {
 
 });
 
-app.post('/user/remove/notebook/:notebokId', (req, res) => {
+app.post('/user/remove/notebook/:notebookId', (req, res) => {
 
     let notebookId = req.params.notebookId;
 
@@ -213,7 +213,7 @@ app.post('/user/remove/notebook/:notebokId', (req, res) => {
 
 });
 
-app.post('user/edit/notebook/:notebookId', (req, res) => {
+app.post('/user/edit/notebook/:notebookId', (req, res) => {
 
     let notebookId = req.params.notebookId;
     let title = req.body.title;
@@ -281,7 +281,7 @@ app.post('/user/remove/contact/:contactId', (req, res) => {
 
 });
 
-app.post('user/edit/contact/:contactId', (req, res) => {
+app.post('/user/edit/contact/:contactId', (req, res) => {
 
     let contactId = req.params.contactId;
     let peerName = req.body.peerName;
@@ -301,6 +301,83 @@ app.post('user/edit/contact/:contactId', (req, res) => {
     } else {
         res.json({
             message: "Couldn't edit peer's e-mail:("
+        })
+    }
+
+});
+
+app.post('/user/:email/create/reminder/:isMonthly', (req, res) => {
+
+    let email = req.params.email;
+    let isMonthly = req.params.isMonthly;
+    let reminder = req.body.reminder;
+    let date = req.body.date;
+
+    if(isMonthly !== true) {
+        date = "0, 0";
+    }
+
+    auth.getUserByEmail(email)
+        .then((userInfos) => {
+
+            let createReminder = db.collection('reminders').doc().set({
+               userId: userInfos.uid,
+               isMonthly: isMonthly,
+               date: date,
+               content: reminder
+            });
+
+            if(createReminder) {
+                res.json({
+                    message: "It's 11pm, and I had a tuff day, if this message is on your screen, congrats, it worked"
+                })
+            } else {
+                res.json({
+                    message: "Couldn't add the reminder bro"
+                })
+            }
+
+        })
+
+});
+
+app.post('/user/remove/reminder/:reminderId', (req, res) => {
+
+    let reminderId = req.params.reminderId;
+
+    db.collection('reminders').doc(reminderId).delete()
+        .then(
+            res.json({
+                message: "This reminder was removed! Hope you're now free!"
+            })
+        )
+
+});
+
+app.post('/user/edit/reminder/:reminderId', (req, res) => {
+
+    let reminderId = req.params.reminderId;
+    let isMonthly = req.params.isMonthly;
+    let reminder = req.body.reminder;
+    let date = req.body.date;
+
+    if(isMonthly !== true) {
+        date = "0, 0";
+    }
+
+    let editReminder = db.collection('reminders').doc(reminderId).update({
+        isMonthly: isMonthly,
+        date: date,
+        content: reminder
+    });
+
+    if(editReminder) {
+        res.json({
+            message: "It's 11pm, and I had a tuff day, if this message is on your screen, congrats, it worked"
+        })
+    } else {
+        res.json({
+            message: "Couldn't add the reminder bro"
         })
     }
 
