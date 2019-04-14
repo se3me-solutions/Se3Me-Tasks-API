@@ -361,7 +361,7 @@ app.post('/user/edit/reminder/:reminderId', (req, res) => {
     let reminder = req.body.reminder;
     let date = req.body.date;
 
-    if(isMonthly !== true) {
+    if(!isMonthly) {
         date = "0, 0";
     }
 

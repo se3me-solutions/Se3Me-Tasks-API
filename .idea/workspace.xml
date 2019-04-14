@@ -6,7 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="177b761e-45c2-4b1c-bb83-b685d6c4f255" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gabriella.js" beforeDir="false" afterPath="$PROJECT_DIR$/gabriella.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -33,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/gabriella.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
-              <caret line="420" column="31" lean-forward="true" selection-start-line="420" selection-start-column="31" selection-end-line="420" selection-end-column="31" />
+              <caret line="363" column="17" selection-start-line="363" selection-start-column="17" selection-end-line="363" selection-end-column="17" />
               <folding>
                 <element signature="e#914#1910#0" />
                 <element signature="e#1966#2183#0" />
@@ -160,12 +159,12 @@
       <workItem from="1554988709249" duration="171000" />
       <workItem from="1555179321938" duration="682000" />
       <workItem from="1555275993531" duration="45000" />
-      <workItem from="1555276058541" duration="2416000" />
+      <workItem from="1555276058541" duration="2945000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35330000" />
+    <option name="totallyTimeSpent" value="35859000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -225,7 +224,7 @@
     <entry file="file://$PROJECT_DIR$/gabriella.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
-          <caret line="420" column="31" lean-forward="true" selection-start-line="420" selection-start-column="31" selection-end-line="420" selection-end-column="31" />
+          <caret line="363" column="17" selection-start-line="363" selection-start-column="17" selection-end-line="363" selection-end-column="17" />
           <folding>
             <element signature="e#914#1910#0" />
             <element signature="e#1966#2183#0" />
