@@ -383,6 +383,69 @@ app.post('/user/edit/reminder/:reminderId', (req, res) => {
 
 });
 
+app.post('/user/:email/create/goal/', (req, res) => {
+
+    let email = req.params.email;
+    let goal = req.body.goal;
+
+    auth.getUserByEmail(email)
+        .then((userInfos) => {
+
+            let createGoal = db.collection('goals').doc().set({
+                userId: userInfos.uid,
+                goal: goal
+            });
+
+            if(createGoal) {
+                res.json({
+                    message: "Yaohhh, new goals, up and running!"
+                })
+            } else {
+                res.json({
+                    message: "Hmm... it looks like we couldn't add that new goal :/"
+                })
+            }
+
+        })
+
+});
+
+app.post('/user/remove/goal/:goalId', (req, res) => {
+
+    let goalId = req.params.goalId;
+
+    db.collection('goals').doc(goalId).delete()
+        .then(
+
+            res.json({
+                message: "Guys, we deleted it!"
+            })
+
+        )
+
+});
+
+app.post('/user/edit/goal/:goalId/', (req, res) => {
+
+    let goalId = req.params.goalId;
+    let goal = req.body.goal;
+
+    let editGoal = db.collection('goals').doc(goalId).update({
+        goal: goal
+    });
+
+    if(editGoal) {
+        res.json({
+            message: "Edited successfully! New goals, new life"
+        })
+    } else {
+        res.json({
+            message: "Hmmmm... there's an error here...."
+        })
+    }
+
+});
+
 // if the following message appears on the terminal: congrats!
 // if not, just close the laptop for a bit, get some rest and then get back to your amazing work!
 app.listen(3000, () => console.log("Server is up and running on port 3000!"));
